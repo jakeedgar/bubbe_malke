@@ -1,4 +1,3 @@
-'use client'
 import styled from 'styled-components'
 
 export const CardContainer = styled.div`
@@ -10,10 +9,3 @@ export const CardContainer = styled.div`
   padding: 0.25em 1em;
   justify-content: block;
 `
-
-export const CardTitle = styled.h2`
-  font-size: 1.5em;
-  color: #d4d4d4;
-`
-
-export const myString = 'string'

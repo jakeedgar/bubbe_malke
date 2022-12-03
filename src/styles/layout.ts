@@ -2,7 +2,6 @@
 import styled from 'styled-components'
 
 export const Main = styled.main`
-  margin-left: 33%;
-  margin-right: 33%;
-  max-width: 800px;
+  margin: 0 auto;
+  max-width: 500px;
 `

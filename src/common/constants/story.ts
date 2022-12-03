@@ -3,7 +3,7 @@ export type username = {
 }
 
 export const tempName: username = {
-  name: 'jake',
+  name: 'Chaim',
 }
 
 export const story: string = 'The story.'

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Main } from '../styles/layout'
+import { Main } from '../../styles/layout'
 
 export const Header = () => {
   return (

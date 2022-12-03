@@ -1,4 +1,3 @@
-import '../styles/globals.css'
 import Card from '../common/components/Card/Card'
 import { paragraphOne, paragraphTwo, paragraphThree } from '../common/constants/story'
 import { Main } from '../styles/layout'
