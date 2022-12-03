@@ -1,6 +1,5 @@
-import Image from 'next/image'
-import Link from 'next/link'
 import { Header } from './header'
+import RootStyleRegistry from './RootStyleRegistry'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <Header />
-        <div>{children}</div>
+        <RootStyleRegistry>{children}</RootStyleRegistry>
       </body>
     </html>
   )
