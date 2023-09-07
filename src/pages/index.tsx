@@ -11,6 +11,10 @@ export default function Home() {
       <Main>
         <Card title="Chapter 1">{paragraphOne}</Card>
         <br />
+        <Card title="Chapter 2">{paragraphTwo}</Card>
+        <br />
+        <Card title="Chapter 3">{paragraphThree}</Card>
+        <br />
       </Main>
     </Container>
   )
