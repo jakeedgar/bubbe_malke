@@ -1,22 +1,33 @@
-import { useState, useRef, ChangeEventHandler, ChangeEvent } from 'react'
-import styled from 'styled-components'
-import Card from '../common/components/Card/Card'
-import IInput from '../common/components/Input/Input'
-import { paragraphOne, paragraphTwo, paragraphThree } from '../common/constants/story'
-import { Header } from '../common/Header/Header'
+import { useState, ChangeEvent, useEffect } from 'react'
 import { Container, Main } from '../styles/layout'
+import useLocalStorage from '../common/hooks/useLocalStorage'
 
 export const Home = () => {
+  // Initialize custom input data using the useLocalStorage hook
+  const [customData, setCustomData] = useLocalStorage<string>('customData', '')
+  const [displayedData, setDisplayedData] = useState<string>('')
+
+  // Define a function to handle changes to the custom input data
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value
+    setCustomData(newValue) // Update the custom input data in state and localStorage
+  }
+
+  // useEffect to update the displayedData when customData changes
+  useEffect(() => {
+    setDisplayedData(customData)
+  }, [customData])
+
   return (
     <Container>
       <Main>
-        <Header />
-        <Card title="Chapter 1">{paragraphOne}</Card>
-        <br />
-        <Card title="Chapter 2">{paragraphTwo}</Card>
-        <br />
-        <Card title="Chapter 3">{paragraphThree}</Card>
-        <br />
+        <div>
+          <h1>Custom Input Data</h1>
+          <input type="text" value={customData} onChange={handleInputChange} placeholder="Enter custom data" />
+          <p>Stored in localStorage: {customData}</p>
+          <button onSubmit={() => setDisplayedData(customData)}>save</button>
+        </div>
+        <div>{displayedData}</div>
       </Main>
     </Container>
   )
