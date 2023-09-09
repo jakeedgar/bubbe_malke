@@ -1,9 +1,10 @@
 import { useState, ChangeEvent, useEffect } from 'react'
 import { Container, Main } from '../styles/layout'
 import useLocalStorage from '../common/hooks/useLocalStorage'
+import useLocalStorageDisplay from '../common/hooks/useLocalStorageDisplay'
 
 export const Home = () => {
-  // Initialize custom input data using the useLocalStorage hook
+  const localStorageData = useLocalStorageDisplay()
   const [customData, setCustomData] = useLocalStorage<string>('customData', '')
   const [displayedData, setDisplayedData] = useState<string>('')
 
@@ -22,12 +23,12 @@ export const Home = () => {
     <Container>
       <Main>
         <div>
-          <h1>Custom Input Data</h1>
-          <input type="text" value={customData} onChange={handleInputChange} placeholder="Enter custom data" />
-          <p>Stored in localStorage: {customData}</p>
-          <button onSubmit={() => setDisplayedData(customData)}>save</button>
+          {Object.entries(localStorageData).map(([key, value]) => (
+            <p key={key}>
+              <strong>{key}:</strong> {value}
+            </p>
+          ))}
         </div>
-        <div>{displayedData}</div>
       </Main>
     </Container>
   )
