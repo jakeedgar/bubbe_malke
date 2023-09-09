@@ -2,11 +2,12 @@ import { useState, ChangeEvent, useEffect } from 'react'
 import { Container, Main } from '../styles/layout'
 import useLocalStorage from '../common/hooks/useLocalStorage'
 import useLocalStorageDisplay from '../common/hooks/useLocalStorageDisplay'
+import { Title } from '../common/components/Typography/Typography'
 
 export const Home = () => {
   const localStorageData = useLocalStorageDisplay()
   const [customData, setCustomData] = useLocalStorage<string>('customData', '')
-  const [displayedData, setDisplayedData] = useState<string>('')
+  const [displayedData, setDisplayedData] = useState<string>('Test')
 
   // Define a function to handle changes to the custom input data
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -22,13 +23,20 @@ export const Home = () => {
   return (
     <Container>
       <Main>
-        <div>
-          {Object.entries(localStorageData).map(([key, value]) => (
-            <p key={key}>
-              <strong>{key}:</strong> {value}
-            </p>
-          ))}
-        </div>
+        <Title> This is the data:</Title>
+        <ul
+          style={{
+            color: '#fff',
+          }}
+        >
+          {Object.entries(localStorageData).map(([key, value]) =>
+            key !== 'ally-supports-cache' ? (
+              <li key={key}>
+                <>{key}:</> {value}
+              </li>
+            ) : null,
+          )}
+        </ul>
       </Main>
     </Container>
   )
